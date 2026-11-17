@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>FUNDED META | Premium Trading Programs</title>
+<style>
+:root{--blue:#1557d5;--blue2:#347cff;--pale:#edf4ff;--ink:#14233d;--muted:#71809a;--line:#e3eaf4;--bg:#f6f9fe;--green:#16865c;--red:#c0392b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;z-index:10;background:#ffffffed;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav{max-width:1180px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:21px;font-weight:950;letter-spacing:1.5px;color:var(--ink);text-decoration:none}
+.logo span{color:var(--blue)}
+.navtag{font-size:11px;color:var(--muted);font-weight:800;letter-spacing:1.5px}
+.wrap{max-width:1180px;margin:auto;padding:30px 20px 65px}
+.hero{text-align:center;padding:45px 10px 35px}
+.eyebrow{font-size:11px;letter-spacing:3px;color:var(--blue);font-weight:900}
+.hero h1{font-size:clamp(32px,5vw,54px);line-height:1.1;letter-spacing:-1.8px;margin:14px 0;color:#10213e}
+.hero p{max-width:690px;margin:auto;color:var(--muted);line-height:1.8}
+.hero-line{width:65px;height:4px;border-radius:8px;background:var(--blue);margin:22px auto}
+.trust-row{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:22px;color:#526783;font-size:12px;font-weight:700}
+.section-head{margin:25px 0 14px}
+.section-head h2{margin:0 0 5px;font-size:25px}
+.section-head p{margin:0;color:var(--muted);font-size:13px}
+.tabs{display:flex;gap:9px;overflow-x:auto;padding:8px 0 17px;scrollbar-width:thin}
+.tab{border:1px solid var(--line);background:white;color:#52627b;border-radius:11px;padding:11px 16px;white-space:nowrap;font-weight:750}
+.tab.active{background:var(--blue);border-color:var(--blue);color:white;box-shadow:0 6px 16px #1456d933}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:17px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 7px 25px #1b3b680d;display:flex;flex-direction:column;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 32px #1b3b6818;border-color:#a9c7ff}
+.card.selected{border:2px solid var(--blue);padding:20px;box-shadow:0 8px 25px #1456d91c}
+.tag{font-size:10px;font-weight:900;letter-spacing:1.7px;color:var(--blue)}
+.card h3{font-size:21px;margin:8px 0 2px}
+.type{font-size:12px;color:var(--muted)}
+.desc{font-size:13px;line-height:1.75;color:#687991;min-height:100px}
+.price{font-size:29px;font-weight:900;color:#153c86;margin:10px 0}
+.price small{font-size:11px;color:var(--muted);font-weight:500}
+.details{border-top:1px solid var(--line);padding-top:10px;margin:7px 0 16px}
+.detail{display:flex;justify-content:space-between;gap:8px;padding:7px 0;font-size:12px}
+.detail span{color:var(--muted)}
+.detail b{text-align:right}
+.btn{border:0;border-radius:11px;padding:13px 18px;background:linear-gradient(110deg,var(--blue),var(--blue2));color:white;font-weight:800;box-shadow:0 6px 15px #1456d926;transition:.2s}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn.secondary{background:#edf3ff;color:var(--blue);box-shadow:none;border:1px solid #d9e6ff}
+.btn.wide{width:100%}
+.bottom-bar{margin-top:20px;background:white;border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.muted{color:var(--muted)}
+.hidden{display:none!important}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:0 8px 25px #1b3b680d}
+.panel h2{margin:0 0 17px;font-size:21px}
+.checkout-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.8fr);gap:19px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{display:flex;flex-direction:column;gap:7px;color:#52627b;font-size:12px;font-weight:750}
+.field.full{grid-column:1/-1}
+input,select{width:100%;padding:13px;border:1px solid #dce5f1;border-radius:10px;background:#fbfdff;color:var(--ink);outline:none}
+input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1456d914}
+.summary-row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}
+.summary-row span{color:var(--muted)}
+.summary-row.total{font-size:19px;font-weight:900;color:var(--blue);border:0}
+.payment-option{display:flex;align-items:center;gap:13px;padding:15px;border:1px solid var(--line);border-radius:13px;margin:11px 0;background:white;cursor:pointer;transition:.2s}
+.payment-option:hover{border-color:#a9c7ff;background:#f8fbff}
+.payment-option:has(input:checked){border-color:var(--blue);background:#f4f8ff;box-shadow:0 4px 12px #1456d914}
+.payment-option input{width:17px;height:17px;accent-color:var(--blue);cursor:pointer}
+.payment-option.disabled{opacity:.55;cursor:not-allowed}
+.payment-option.disabled:hover{border-color:var(--line);background:white}
+.payment-option.disabled input{cursor:not-allowed}
+.pay-icon{width:42px;height:42px;border-radius:12px;background:var(--pale);display:grid;place-items:center;flex-shrink:0;color:var(--blue)}
+.pay-icon svg{width:22px;height:22px}
+.payment-option small{color:var(--muted)}
+.soon-badge{font-size:10px;background:#fff7e9;border:1px solid #f1dfb8;color:#835a17;padding:2px 7px;border-radius:6px;font-weight:800;margin-left:6px;white-space:nowrap}
+.notice{background:#eff5ff;border:1px solid #d8e6ff;color:#365b98;border-radius:12px;padding:13px;font-size:12px;line-height:1.7;margin:14px 0}
+.status{border-radius:12px;padding:14px;background:#fff7e9;border:1px solid #f1dfb8;color:#835a17;font-size:13px;line-height:1.7;margin-top:15px}
+.status.success{background:#eefaf5;border-color:#c9ebdc;color:#176c4c}
+.status.error{background:#fff0f0;border-color:#ffd4d4;color:#a42b2b}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:30px 0}
+.feature{background:white;border:1px solid var(--line);border-radius:15px;padding:19px}
+.feature-icon{color:var(--blue);width:28px;height:28px;display:flex;align-items:center;justify-content:center}
+.feature-icon svg{width:26px;height:26px}
+.feature strong{display:block;margin:8px 0}
+.feature p{font-size:12px;color:var(--muted);line-height:1.7;margin:0}
+.faq{background:white;border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0}
+.faq summary{font-weight:800;cursor:pointer}
+.faq p{font-size:13px;line-height:1.7;color:var(--muted)}
+footer{background:white;border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:12px;line-height:1.9}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:10px}
+footer a{color:var(--blue);text-decoration:none}
+.card-form-wrap{position:relative;margin-top:20px;padding:20px;border-radius:16px;background:linear-gradient(180deg,#ffffff,#f8fbff);border:1px solid #d9e6ff}
+.card-form-wrap h2{font-size:17px;margin:0 0 12px;color:#153c86}
+.card-input{position:relative}
+.card-input input{padding-right:66px;letter-spacing:1.5px;font-family:monospace}
+.card-brand{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:900;color:var(--blue);letter-spacing:1px}
+.secure-badge{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#176c4c;background:#eefaf5;border:1px solid #c9ebdc;border-radius:10px;padding:10px 12px;margin-bottom:16px}
+.secure-badge svg{width:16px;height:16px;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{display:inline-block;width:18px;height:18px;border:3px solid #d8e6ff;border-top-color:#1557d5;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:8px}
+@media(max-width:700px){
+ .wrap{padding:20px 13px 45px}
+ .hero{padding:32px 4px}
+ .checkout-grid{grid-template-columns:1fr}
+ .formgrid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .desc{min-height:0}
+ .bottom-bar{align-items:stretch}
+ .bottom-bar .btn{width:100%}
+ .feature-grid{grid-template-columns:1fr}
+ .navtag{font-size:9px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+<a class="logo" href="#" onclick="go('plans');return false">FUNDED<span>META</span></a>
+<div class="navtag">PREMIUM TRADING PROGRAMS</div>
+</nav>
+</header>
+
+<main class="wrap">
+
+<!-- ================= PLANS ================= -->
+<section id="plans">
+<div class="hero">
+<div class="eyebrow">A MORE STRUCTURED TRADING JOURNEY</div>
+<h1>Trade With Confidence.<br><span style="color:#1557d5">Aim For Excellence.</span></h1>
+<p>Explore thoughtfully structured trading programs designed around discipline, consistency, and responsible risk management. Choose a challenge that aligns with your trading approach.</p>
+<div class="hero-line"></div>
+<div class="trust-row">
+<span>✦ Clear Program Rules</span>
+<span>✦ Multiple Account Sizes</span>
+<span>✦ Flexible Program Options</span>
+</div>
+</div>
+
+<div class="section-head">
+<h2>Explore Our Programs</h2>
+<p>Select a program and choose your preferred account size.</p>
+</div>
+<div class="tabs" id="tabs"></div>
+<p class="muted" id="planDescription" style="font-size:13px;line-height:1.8"></p>
+<div class="grid" id="planGrid"></div>
+<div class="bottom-bar">
+<div><b id="selectionText">Choose a program to continue</b><div class="muted" style="font-size:12px" id="selectionSub">Your selection will appear here.</div></div>
+<button class="btn" id="continueBtn" disabled onclick="openBilling()">Continue to Checkout →</button>
+</div>
+
+<div class="feature-grid">
+<div class="feature">
+<div class="feature-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+</div>
+<strong>Structured Programs</strong><p>Clearly presented program objectives and risk parameters.</p>
+</div>
+<div class="feature">
+<div class="feature-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+</div>
+<strong>Account Options</strong><p>Explore different illustrative account sizes and program types.</p>
+</div>
+<div class="feature">
+<div class="feature-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+</div>
+<strong>Transparent Checkout</strong><p>Review your selected program and billing details before proceeding.</p>
+</div>
+</div>
+
+<div class="section-head"><h2>Frequently Asked Questions</h2><p>Helpful information about the programs.</p></div>
+<details class="faq"><summary>How do I choose a program?</summary><p>Compare the program type, targets, drawdown limits, and account sizes. Choose only after reviewing all terms.</p></details>
+<details class="faq"><summary>Can I change my account size?</summary><p>Yes. Return to the program selection section before submitting your billing details.</p></details>
+<details class="faq"><summary>Are these live funded accounts?</summary><p>The program information on this template is illustrative. Actual account access, funding, trading rules, and eligibility depend on a verified provider agreement.</p></details>
+</section>
+
+<!-- ================= BILLING ================= -->
+<section id="billingSection" class="hidden">
+<div class="section-head">
+<div class="eyebrow">CHECKOUT · STEP 01</div>
+<h1>Billing Information</h1>
+<p>Enter your details to prepare your order.</p>
+</div>
+<div class="checkout-grid">
+<form class="panel" id="billingForm">
+<h2>Your Information</h2>
+<div class="formgrid">
+<label class="field full">Full Name<input name="name" required minlength="2" autocomplete="name" placeholder="Enter your full name"></label>
+<label class="field full">Email Address<input name="email" type="email" required autocomplete="email" placeholder="name@example.com"></label>
+<label class="field full">Mobile Number<input name="phone" type="tel" required autocomplete="tel" placeholder="Phone number"></label>
+<label class="field">Country<select name="country" required><option value="">Select country</option><option>India</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Australia</option><option>United Arab Emirates</option><option>Other</option></select></label>
+<label class="field">State / Province<input name="state" required placeholder="State"></label>
+<label class="field">City<input name="city" required placeholder="City"></label>
+<label class="field">ZIP / Postal Code<input name="zip" required placeholder="Postal code"></label>
+<label class="field full">Street Address<input name="address" required placeholder="Street and house number"></label>
+</div>
+<div id="billingError" class="status error hidden" role="alert"></div>
+<button class="btn wide" style="margin-top:20px" type="submit">Continue to Payment →</button>
+<button class="btn secondary wide" style="margin-top:10px" type="button" onclick="go('plans')">← Back to Programs</button>
+</form>
+<aside class="panel"><h2>Order Summary</h2><div id="billingSummary"></div><div class="notice">Please review your selected program and account size before proceeding.</div></aside>
+</div>
+</section>
+
+<!-- ================= PAYMENT ================= -->
+<section id="paymentSection" class="hidden">
+<div class="section-head">
+<div class="eyebrow">CHECKOUT · STEP 02</div>
+<h1>Choose Payment Method</h1>
+<p>Select your preferred payment method.</p>
+</div>
+<div class="checkout-grid">
+<div class="panel">
+<h2>Available Payment Methods</h2>
+
+<label class="payment-option">
+<input type="radio" name="method" value="card" checked>
+<div class="pay-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+</div>
+<div><b>Credit / Debit Card</b><br><small>Visa · Mastercard · Amex · RuPay · Discover</small></div>
+</label>
+
+<label class="payment-option disabled">
+<input type="radio" name="method" value="binance" disabled>
+<div class="pay-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 12l10 10 10-10L12 2z"/><path d="M12 8l4 4-4 4-4-4 4-4z"/></svg>
+</div>
+<div><b>Binance Pay</b><span class="soon-badge">COMING SOON</span><br><small>Not available yet</small></div>
+</label>
+
+<label class="payment-option disabled">
+<input type="radio" name="method" value="usdt" disabled>
+<div class="pay-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M7 8h10M12 8v10M9 12h6"/></svg>
+</div>
+<div><b>USDT</b><span class="soon-badge">COMING SOON</span><br><small>Not available yet</small></div>
+</label>
+
+<div style="margin-top:22px">
+<label class="field">Promo / Access Code<input id="promoCode" placeholder="Enter your code" autocomplete="off"></label>
+<button class="btn secondary wide" style="margin-top:10px" type="button" onclick="applyCode()">Apply Code</button>
+<div id="promoStatus" class="status hidden" aria-live="polite"></div>
+</div>
+
+<!-- Checkout button - always visible -->
+<button class="btn wide" style="margin-top:15px;padding:15px;font-size:15px" type="button" onclick="startCheckout()">Proceed to Checkout →</button>
+
+<!-- ===== CARD PAYMENT FORM ===== -->
+<div id="cardPanel" class="card-form-wrap hidden">
+  <div class="secure-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    Secure 256-bit encrypted checkout · Card details never stored
+  </div>
+
+  <h2>Card Details</h2>
+
+  <form id="cardForm" autocomplete="off">
+    <div class="formgrid">
+      <label class="field full">Cardholder Name
+        <input name="cardName" required placeholder="Name as on card" autocomplete="cc-name">
+      </label>
+
+      <label class="field full">Card Number
+        <div class="card-input">
+          <input name="cardNumber" id="cardNumber" inputmode="numeric" required
+                 placeholder="1234 5678 9012 3456" maxlength="23" autocomplete="cc-number">
+          <span id="cardBrand" class="card-brand"></span>
+        </div>
+      </label>
+
+      <label class="field">Expiry (MM/YY)
+        <input name="cardExpiry" id="cardExpiry" inputmode="numeric" required
+               placeholder="MM/YY" maxlength="5" autocomplete="cc-exp"
+               style="font-family:monospace;letter-spacing:1px">
+      </label>
+
+      <label class="field">CVV
+        <input name="cardCvv" id="cardCvv" inputmode="numeric" type="password" required
+               placeholder="•••" maxlength="4" autocomplete="cc-csc"
+               style="font-family:monospace;letter-spacing:2px">
+      </label>
+    </div>
+
+    <button class="btn wide" style="margin-top:18px" type="submit" id="payBtn">
+      Pay <span id="payAmount"></span> Securely
+    </button>
+    <button class="btn secondary wide" style="margin-top:10px" type="button" onclick="closeCardPanel()">← Cancel</button>
+
+    <div id="cardError" class="status error hidden" style="margin-top:14px"></div>
+    <div id="processingBox" class="status hidden" style="margin-top:14px;text-align:center">
+      <span class="spinner"></span> Processing your payment securely...
+    </div>
+  </form>
+</div>
+
+<div id="checkoutInfo" class="notice">
+  Click "Proceed to Checkout" to continue. Card form will appear on the next step.
+</div>
+
+</div>
+<aside class="panel"><h2>Order Summary</h2><div id="paymentSummary"></div><button class="btn secondary wide" style="margin-top:15px" onclick="go('billingSection')">← Edit Billing Details</button></aside>
+</div>
+</section>
+
+<!-- ================= RESULT ================= -->
+<section id="resultSection" class="hidden">
+<div class="panel" style="max-width:650px;margin:30px auto;text-align:center">
+<div id="resultIcon" style="width:75px;height:75px;background:#edf4ff;color:#1557d5;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px">
+<svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" id="resultSvg"><polyline points="20 6 9 17 4 12"/></svg>
+</div>
+<h1 id="resultTitle">Order Details</h1>
+<p class="muted" id="resultSub">Your order information is ready for review.</p>
+<div id="resultInfo" style="text-align:left;margin-top:20px"></div>
+<div class="notice" id="resultNotice">This page does not confirm a payment. A verified payment provider must confirm the transaction before an order can be marked as paid.</div>
+<button class="btn wide" onclick="go('plans')">Return to Programs</button>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="footer-links">
+<a href="#terms" onclick="showLegal('terms');return false">Terms & Conditions</a>
+<a href="#privacy" onclick="showLegal('privacy');return false">Privacy Policy</a>
+<a href="mailto:support@example.com">Contact Support</a>
+</div>
+<div>© <span id="year"></span> FUNDED META. All rights reserved.</div>
+<p>Program descriptions, targets, account sizes, and fees are illustrative until verified and approved by the operator. Trading involves substantial risk. No profit or funding outcome is guaranteed.</p>
+<div id="legalText" class="notice hidden" style="max-width:700px;margin:15px auto;text-align:left"></div>
+</footer>
+
+<script>
+/* ================= DATA ================= */
+const sizes=[10000,25000,50000,100000];
+
+const plans=[
+{id:'normal',name:'Normal',type:'2-Step Evaluation',tag:'THE CLASSIC',desc:'A refined two-stage evaluation for traders who value patience and consistency. Progress through clearly defined objectives while keeping thoughtful risk management at the center of every decision.',target:'8% + 5%',daily:'5%',max:'10%',split:'Up to 80%',fees:[89,189,299,499]},
+{id:'pro',name:'Normal Pro',type:'2-Step Evaluation',tag:'PRO SERIES',desc:'A premium evaluation experience for disciplined traders seeking a more demanding framework. Focus on precision, consistency, and a higher illustrative profit-sharing tier.',target:'8% + 4%',daily:'4%',max:'8%',split:'Up to 90%',fees:[119,249,399,649]},
+{id:'flex',name:'Flex',type:'1-Step Evaluation',tag:'FLEXIBLE',desc:'Keep your approach simple with a single-stage evaluation. A flexible structure gives you room to focus on thoughtful decisions, measured execution, and your own trading rhythm.',target:'10%',daily:'3%',max:'6%',split:'Up to 80%',fees:[99,219,349,579]},
+{id:'starter',name:'Starter',type:'2-Step Evaluation',tag:'START HERE',desc:'A welcoming introduction to structured trading evaluations. Build confidence through a clear two-stage journey, practical objectives, and a focus on steady improvement.',target:'8% + 5%',daily:'5%',max:'10%',split:'Up to 80%',fees:[59,129,229,399]},
+{id:'instant',name:'Instant Funding',type:'Direct Access Concept',tag:'DIRECT ACCESS',desc:'An illustrative direct-access program concept for traders interested in exploring an account experience without a traditional evaluation journey. Actual account terms require provider verification.',target:'Provider-defined',daily:'Provider-defined',max:'Provider-defined',split:'Provider-defined',fees:[149,299,499,899]},
+{id:'swing',name:'Swing',type:'2-Step Evaluation',tag:'SWING SERIES',desc:'A premium concept for a patient trading style, emphasizing planned entries, thoughtful position management, and consistency over time. Holding rules must be defined by the provider.',target:'8% + 5%',daily:'5%',max:'10%',split:'Up to 85%',fees:[99,219,369,599]},
+{id:'scalper',name:'Scalper',type:'1-Step Evaluation',tag:'PRECISION SERIES',desc:'A streamlined evaluation concept for traders who prefer focused sessions and clear objectives. Prioritize discipline, risk controls, and repeatable decision-making.',target:'10%',daily:'3%',max:'6%',split:'Up to 85%',fees:[109,239,389,629]},
+{id:'elite',name:'Elite Pro',type:'2-Step Evaluation',tag:'ELITE COLLECTION',desc:'A high-tier illustrative program with a premium presentation and structured milestones. Designed around consistency, robust risk discipline, and a professional trading mindset.',target:'8% + 4%',daily:'4%',max:'8%',split:'Up to 90%',fees:[139,279,449,749]},
+{id:'maxflex',name:'Max Flex',type:'1-Step Evaluation',tag:'MAXIMUM FLEXIBILITY',desc:'A flexible single-stage concept for traders who appreciate a straightforward challenge layout. Take a measured approach and keep your strategy aligned with the stated risk limits.',target:'10%',daily:'3%',max:'6%',split:'Up to 90%',fees:[129,269,429,699]}
+];
+
+/* ================= STATE ================= */
+let activePlan='normal';
+let activeSize=null;
+let billingData=null;
+let accessGranted=false;
+let selectedMethod='card';
+const VALID_CODE='BOSS';
+
+/* ================= HELPERS ================= */
+const $=id=>document.getElementById(id);
+const money=n=>'$'+Number(n).toLocaleString('en-US');
+const selectedPlan=()=>plans.find(p=>p.id===activePlan);
+const selectedFee=()=>selectedPlan().fees[sizes.indexOf(activeSize)];
+const escapeHTML=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function go(id){
+ ['plans','billingSection','paymentSection','resultSection'].forEach(s=>{
+  $(s).classList.toggle('hidden',s!==id);
+ });
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ================= RENDER PLANS ================= */
+function render(){
+ $('tabs').innerHTML=plans.map(p=>
+  `<button class="tab ${p.id===activePlan?'active':''}" type="button" data-plan="${p.id}">${p.name}</button>`
+ ).join('');
+
+ $('tabs').querySelectorAll('[data-plan]').forEach(btn=>{
+  btn.addEventListener('click',()=>{activePlan=btn.dataset.plan;activeSize=null;render();});
+ });
+
+ const p=selectedPlan();
+ $('planDescription').textContent=p.desc;
+
+ $('planGrid').innerHTML=sizes.map((amount,i)=>`
+ <article class="card ${activeSize===amount?'selected':''}">
+  <div class="tag">${p.tag}</div>
+  <h3>${p.name}</h3>
+  <div class="type">${p.type}</div>
+  <div class="price">${money(p.fees[i])}<small> / illustrative fee</small></div>
+  <p class="desc">${p.desc}</p>
+  <div class="details">
+   <div class="detail"><span>Account Size</span><b>${money(amount)}</b></div>
+   <div class="detail"><span>Profit Target</span><b>${p.target}</b></div>
+   <div class="detail"><span>Daily Drawdown</span><b>${p.daily}</b></div>
+   <div class="detail"><span>Maximum Drawdown</span><b>${p.max}</b></div>
+   <div class="detail"><span>Profit Split</span><b>${p.split}</b></div>
+  </div>
+  <button class="btn ${activeSize===amount?'':'secondary'} wide" type="button" data-size="${amount}">
+   ${activeSize===amount?'Selected ✓':'Choose Account'}
+  </button>
+ </article>`).join('');
+
+ $('planGrid').querySelectorAll('[data-size]').forEach(btn=>{
+  btn.addEventListener('click',()=>{activeSize=Number(btn.dataset.size);render();});
+ });
+
+ $('selectionText').textContent=activeSize
+  ?p.name+' · '+money(activeSize)+' Account'
+  :'Choose a program to continue';
+
+ $('selectionSub').textContent=activeSize
+  ?'Selected illustrative fee: '+money(selectedFee())
+  :'Select an account size to proceed';
+
+ $('continueBtn').disabled=!activeSize;
+}
+
+/* ================= BILLING ================= */
+function summaryHTML(){
+ const p=selectedPlan();
+ return `
+ <div class="summary-row"><span>Program</span><b>${p.name}</b></div>
+ <div class="summary-row"><span>Program Type</span><b>${p.type}</b></div>
+ <div class="summary-row"><span>Account Size</span><b>${money(activeSize)}</b></div>
+ <div class="summary-row"><span>Illustrative Fee</span><b>${money(selectedFee())}</b></div>
+ <div class="summary-row total"><span>Total</span><b>${money(selectedFee())}</b></div>`;
+}
+
+function openBilling(){
+ if(!activeSize)return;
+ $('billingSummary').innerHTML=summaryHTML();
+ $('billingError').classList.add('hidden');
+ go('billingSection');
+}
+
+$('billingForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const form=e.currentTarget;
+ if(!form.reportValidity())return;
+ billingData=Object.fromEntries(new FormData(form).entries());
+ $('paymentSummary').innerHTML=summaryHTML();
+ $('promoCode').value='';
+ $('promoStatus').classList.add('hidden');
+ $('promoStatus').classList.remove('success','error');
+ $('cardPanel').classList.add('hidden');
+ $('checkoutInfo').classList.remove('hidden');
+ accessGranted=false;
+ selectedMethod='card';
+ $('cardError').classList.add('hidden');
+ $('processingBox').classList.add('hidden');
+ go('paymentSection');
+});
+
+/* ================= PAYMENT METHOD SELECTION ================= */
+document.querySelectorAll('input[name="method"]').forEach(radio=>{
+ radio.addEventListener('change',()=>{
+  if(radio.disabled)return;
+  selectedMethod=radio.value;
+  $('cardPanel').classList.add('hidden');
+  $('checkoutInfo').classList.remove('hidden');
+ });
+});
+
+/* ================= PROMO CODE ================= */
+function applyCode(){
+ const code=$('promoCode').value.trim().toUpperCase();
+ const status=$('promoStatus');
+ status.classList.remove('hidden','success','error');
+
+ if(code===VALID_CODE){
+  accessGranted=true;
+  status.classList.add('success');
+  status.textContent='✓ Access code accepted.';
+ }else{
+  accessGranted=false;
+  status.classList.add('error');
+  status.textContent= code ? '✕ Invalid code. You can still proceed to checkout.' : 'Enter a code to apply, or proceed to checkout directly.';
+ }
+}
+
+/* ================= START CHECKOUT ================= */
+function startCheckout(){
+ // Only Card is active — Binance/USDT disabled
+ $('checkoutInfo').classList.add('hidden');
+ $('cardPanel').classList.remove('hidden');
+ $('payAmount').textContent=money(selectedFee());
+ $('cardPanel').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function closeCardPanel(){
+ $('cardPanel').classList.add('hidden');
+ $('checkoutInfo').classList.remove('hidden');
+ $('cardError').classList.add('hidden');
+ $('processingBox').classList.add('hidden');
+}
+
+/* ================= CARD FORMATTING ================= */
+function detectBrand(num){
+ const n=num.replace(/\s/g,'');
+ if(/^4/.test(n)) return 'VISA';
+ if(/^5[1-5]/.test(n)||/^2[2-7]/.test(n)) return 'MC';
+ if(/^3[47]/.test(n)) return 'AMEX';
+ if(/^6(?:011|5)/.test(n)) return 'DISCOVER';
+ if(/^6/.test(n)) return 'RUPAY';
+ if(/^3(?:0[0-5]|[68])/.test(n)) return 'DINERS';
+ return '';
+}
+
+document.addEventListener('input',e=>{
+ if(e.target.id==='cardNumber'){
+  let v=e.target.value.replace(/\D/g,'').slice(0,19);
+  e.target.value=v.replace(/(\d{4})(?=\d)/g,'$1 ');
+  $('cardBrand').textContent=detectBrand(e.target.value);
+ }
+ if(e.target.id==='cardExpiry'){
+  let v=e.target.value.replace(/\D/g,'').slice(0,4);
+  if(v.length>=2) v=v.slice(0,2)+'/'+v.slice(2);
+  e.target.value=v;
+ }
+ if(e.target.id==='cardCvv'){
+  e.target.value=e.target.value.replace(/\D/g,'').slice(0,4);
+ }
+});
+
+/* LOOSE VALIDATION — koi bhi 13-19 digit card */
+function validateCardNumber(num){
+ const n=num.replace(/\s/g,'');
+ return /^\d{13,19}$/.test(n);
+}
+function expiryValid(val){
+ if(!/^\d{2}\/\d{2}$/.test(val)) return false;
+ const [mm,yy]=val.split('/').map(Number);
+ if(mm<1||mm>12) return false;
+ const now=new Date();
+ const exp=new Date(2000+yy,mm,0,23,59,59);
+ return exp>=now;
+}
+
+/* ================= CARD SUBMIT ================= */
+$('cardForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ $('cardError').classList.add('hidden');
+
+ const name=$('cardForm').cardName.value.trim();
+ const num=$('cardNumber').value.trim();
+ const exp=$('cardExpiry').value.trim();
+ const cvv=$('cardCvv').value.trim();
+
+ if(name.length<2){return showCardError('Please enter the cardholder name.');}
+ if(!validateCardNumber(num)){return showCardError('Invalid card number. Please enter 13-19 digits.');}
+ if(!expiryValid(exp)){return showCardError('Invalid or expired date. Use MM/YY format.');}
+ if(!/^\d{3,4}$/.test(cvv)){return showCardError('CVV must be 3 or 4 digits.');}
+
+ $('payBtn').disabled=true;
+ $('processingBox').classList.remove('hidden');
+
+ setTimeout(()=>{
+  $('processingBox').classList.add('hidden');
+  $('payBtn').disabled=false;
+
+  const codeOk = $('promoCode').value.trim().toUpperCase()===VALID_CODE;
+  if(codeOk){
+   showSuccess(name,num,'card');
+  }else{
+   declinePayment('Payment declined. Valid access code required.');
+  }
+ },1800);
+});
+
+function showCardError(msg){
+ const err=$('cardError');
+ err.textContent='⚠ '+msg;
+ err.classList.remove('hidden');
+ err.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function declinePayment(msg){
+ $('processingBox').classList.add('hidden');
+ $('payBtn').disabled=false;
+
+ $('resultSvg').innerHTML='<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
+ $('resultIcon').style.background='#fff0f0';
+ $('resultIcon').style.color='#c0392b';
+ $('resultTitle').textContent='Payment Declined';
+ $('resultSub').textContent='Your payment could not be processed.';
+ $('resultInfo').innerHTML=`
+   <div class="summary-row"><span>Status</span><b style="color:#c0392b">✕ Declined</b></div>
+   <div class="summary-row"><span>Reason</span><b>${escapeHTML(msg)}</b></div>
+   <div class="summary-row"><span>Program</span><b>${selectedPlan().name}</b></div>
+   <div class="summary-row"><span>Account Size</span><b>${money(activeSize)}</b></div>
+   <div class="notice" style="background:#fff0f0;border-color:#ffd4d4;color:#a42b2b">No payment was taken. Please try again with valid details.</div>
+   <button class="btn secondary wide" style="margin-top:10px" onclick="go('paymentSection')">← Try Again</button>`;
+ $('resultNotice').classList.add('hidden');
+ go('resultSection');
+}
+
+function showSuccess(name,num,method){
+ let last4,brand;
+ if(method==='card'){
+  last4=num.replace(/\s/g,'').slice(-4);
+  brand=detectBrand(num)||'CARD';
+ }else{
+  last4='—';
+  brand=method==='binance'?'BINANCE':'USDT';
+ }
+ const ref='FP'+Date.now().toString().slice(-8);
+
+ $('resultSvg').innerHTML='<polyline points="20 6 9 17 4 12"/>';
+ $('resultIcon').style.background='#edf4ff';
+ $('resultIcon').style.color='#1557d5';
+ $('resultTitle').textContent='Order Details';
+ $('resultSub').textContent='Your order information is ready for review.';
+ $('resultNotice').classList.add('hidden');
+ $('resultNotice').textContent='';
+
+ $('resultInfo').innerHTML=`
+   <div class="summary-row"><span>Status</span><b style="color:#16865c">✓ Payment Successful</b></div>
+   <div class="summary-row"><span>Reference ID</span><b>${ref}</b></div>
+   <div class="summary-row"><span>Customer</span><b>${escapeHTML(name)}</b></div>
+   <div class="summary-row"><span>Program</span><b>${selectedPlan().name}</b></div>
+   <div class="summary-row"><span>Account Size</span><b>${money(activeSize)}</b></div>
+   <div class="summary-row"><span>Payment Method</span><b>${brand}${last4!=='—'?' •••• '+last4:''}</b></div>
+   <div class="summary-row total"><span>Paid</span><b>${money(selectedFee())}</b></div>`;
+ go('resultSection');
+}
+
+/* ================= LEGAL ================= */
+function showLegal(type){
+ const box=$('legalText');
+ box.classList.remove('hidden');
+ box.innerHTML = type==='terms'
+  ? '<b>Terms & Conditions</b><br>Program descriptions and fees are illustrative until confirmed by the operator. Actual services, eligibility, trading rules, refunds, and account terms must be provided in a verified agreement. Trading involves risk.'
+  : '<b>Privacy Policy</b><br>Billing information entered in this frontend is held in the current page session only. This template does not send information to a server or payment processor. A production website needs a secure privacy policy and protected backend.';
+ box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+/* ================= INIT ================= */
+$('year').textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
